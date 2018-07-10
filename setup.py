@@ -512,6 +512,16 @@ if os.environ.has_key('PYTHONPATH'):
   print "\n\n\nNew pkgs_pth = ", pkgs_pth
   print "\n\n\n"
 #pkgs_pth = '/usr/local/lib/python2.7/site-packages/PyNIO'
+
+if not os.environ.has_key("PYNIOPATH"):
+  raise SystemExit("ERROR: must set PYNIOPATH environment variable before attempting to install PyNIO locally.")
+ 
+pkgs_pth = os.environ["PYNIOPATH"]
+if not os.path.exists(pkgs_pth):
+    os.system("mkdir -p " + pkgs_pth )
+    
+
+#pkgs_pth = os.environ["PyNIOPATH"] # make sure to set this environment variable before attem
  
 #print data_files
 setup (version      = pynio_version,
