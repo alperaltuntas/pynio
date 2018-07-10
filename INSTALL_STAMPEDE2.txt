@@ -1,0 +1,39 @@
+***********************************************************************
+1.) load the following modules:
+
+module purge
+module load intel/17.0.4
+module load impi/17.0.3
+module load python/2.7.13
+module load netcdf/4.3.3.1
+module load ncl_ncarg/6.3.0
+module load nco
+module load hdf5
+module load udunits/2.2.25
+
+***********************************************************************
+2.) set the following environment variables:
+
+export HAS_NETCDF4=1
+export NETCDF4_PREFIX="/opt/apps/intel17/netcdf/4.3.3.1/x86_64/"
+export HAS_HDF5=1
+export HDF5_PREFIX="/opt/apps/intel17/hdf5/1.8.16/x86_64/"
+export F2CLIBS=gfortran
+export F2CLIBS_PREFIX="/opt/apps/gcc/5.4.0/bin/gfortran"
+
+***********************************************************************
+3.) set the PYNIOPATH variable to the directory in which you want to install PyNIO module. For example:
+
+export PYNIOPATH='/home1/05743/altuntas/pynio/site-packages/PyNIO'
+
+***********************************************************************
+4.) Run the setup script to install the module:
+
+python setup.py install --user
+
+***********************************************************************
+5.) add to your PYTHON path the local directory in which the nio.so file is built. For example:
+
+export PYTHONPATH=/home1/05743/altuntas/pynio/build/lib.linux-x86_64-2.7/PyNIO/:$PYTHONPATH
+
+Note: to make the installed module permanently available, add the command in step 5 to youur ~/.bashrc
